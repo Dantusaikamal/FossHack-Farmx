@@ -17,7 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:translator/translator.dart';
 
 class Suggestions extends StatefulWidget {
-  const Suggestions({super.key});
+  const Suggestions({Key? key}) : super(key: key);
 
   static const routeName = '/suggestions';
 
@@ -33,21 +33,21 @@ class _SuggestionsState extends State<Suggestions> {
   @override
   Widget build(BuildContext context) {
     // Get disease from provider
-    final diseaseService = Provider.of<DiseaseService>(context);
+    final _diseaseService = Provider.of<DiseaseService>(context);
 
-    Disease disease = diseaseService.disease;
+    Disease _disease = _diseaseService.disease;
     Size size = MediaQuery.of(context).size;
 
     translator
-        .translate(disease.name, to: langController.getLanguageCode)
+        .translate(_disease.name, to: langController.getLanguageCode)
         .then((value) => langController.setDiseaseName(value.toString()));
 
     translator
-        .translate(disease.possibleCauses, to: langController.getLanguageCode)
+        .translate(_disease.possibleCauses, to: langController.getLanguageCode)
         .then((value) => langController.setPossibleCauses(value.toString()));
 
     translator
-        .translate(disease.possibleSolution,
+        .translate(_disease.possibleSolution,
             to: langController.getLanguageCode)
         .then((value) => langController.setPossibleSolution(value.toString()));
 
@@ -63,7 +63,7 @@ class _SuggestionsState extends State<Suggestions> {
               top: 0,
               left: 0,
               right: 0,
-              child: SizedBox(
+              child: Container(
                 width: double.maxFinite,
                 height: Dimensions.height45 * 11.5,
                 child: Padding(
@@ -75,7 +75,7 @@ class _SuggestionsState extends State<Suggestions> {
                           child: PlantImage(
                             borderColor: AppColors.kMain,
                             size: size,
-                            imageFile: File(disease.imagePath),
+                            imageFile: File(_disease.imagePath),
                           ),
                         ),
                       ),
@@ -131,7 +131,7 @@ class _SuggestionsState extends State<Suggestions> {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       color: AppColors.kMain,
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         image: AssetImage('assets/images/bg.jpg'),
                         fit: BoxFit.cover,
                         opacity: 0.06,
@@ -140,7 +140,7 @@ class _SuggestionsState extends State<Suggestions> {
                         topLeft: Radius.circular(Dimensions.radius30),
                         topRight: Radius.circular(Dimensions.radius30),
                       ),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                           color: Colors.grey,
                           offset: Offset(-3, -2),
@@ -153,7 +153,7 @@ class _SuggestionsState extends State<Suggestions> {
                       verticalSpacing(Dimensions.height10 * 2),
                       Divider(
                         thickness: Dimensions.height10 / 2,
-                        color: const Color.fromARGB(172, 255, 255, 255),
+                        color: Color.fromARGB(172, 255, 255, 255),
                         indent: Dimensions.width30 * 4.5,
                         endIndent: Dimensions.width30 * 4.5,
                       ),
@@ -179,11 +179,11 @@ class _SuggestionsState extends State<Suggestions> {
                       ),
                       verticalSpacing(Dimensions.height10 * 1.5),
                       Expanded(
-                        child: SizedBox(
+                        child: Container(
                           height: 500,
                           child: Container(
                             child: SingleChildScrollView(
-                              physics: const AlwaysScrollableScrollPhysics(
+                              physics: AlwaysScrollableScrollPhysics(
                                   parent: BouncingScrollPhysics()),
                               child: Column(
                                 children: [

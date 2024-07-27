@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:farmx/constants/constants.dart';
 
 import 'dotLayers.dart';
 
 class Loader extends StatefulWidget {
-  const Loader({super.key});
+  const Loader({Key? key}) : super(key: key);
 
   @override
   State<Loader> createState() => _LoaderState();
@@ -18,7 +19,7 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
   final double initialRadius = 40;
   double radius = 0;
   final double dotRadius = 8;
-  final Color dotColor = const Color.fromARGB(255, 0, 255, 8);
+  final Color dotColor = Color.fromARGB(255, 0, 255, 8);
   final Color dotColor1 = Colors.white;
 
   @override
@@ -34,18 +35,18 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
     animationRotation =
         Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
       parent: controller,
-      curve: const Interval(0.5, 1.0, curve: Curves.linear),
+      curve: Interval(0.5, 1.0, curve: Curves.linear),
     ));
 
     animationRadiusIn = Tween<double>(begin: 1.0, end: 0.0).animate(
         CurvedAnimation(
             parent: controller,
-            curve: const Interval(0.75, 1.0, curve: Curves.linear)));
+            curve: Interval(0.75, 1.0, curve: Curves.linear)));
 
     animationRadiusOut = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: controller,
-            curve: const Interval(0.0, 0.25, curve: Curves.linear)));
+            curve: Interval(0.0, 0.25, curve: Curves.linear)));
 
     controller.addListener(() {
       setState(() {
@@ -69,8 +70,9 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.kAccent,
       body: Center(
-        child: SizedBox(
+        child: Container(
           width: 100,
           height: 100,
           child: RotationTransition(
@@ -78,7 +80,7 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
             child: Center(
               child: Stack(
                 children: [
-                  const Dot(
+                  Dot(
                     radius: 30,
                     color: Colors.black12,
                   ),

@@ -12,7 +12,7 @@ import 'package:farmx/src/widgets/spacing.dart';
 import 'package:provider/provider.dart';
 
 class Homescreen extends StatefulWidget {
-  const Homescreen({super.key});
+  const Homescreen({Key? key}) : super(key: key);
 
   @override
   State<Homescreen> createState() => _HomescreenState();
@@ -22,18 +22,18 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     // Get disease from provider
-    final diseaseService = Provider.of<DiseaseService>(context);
+    final _diseaseService = Provider.of<DiseaseService>(context);
 
     // Data
     Size size = MediaQuery.of(context).size;
 
     return GetBuilder<LangController>(
       builder: (langController) => langController.loading
-          ? const Center(
+          ? Center(
               child: CircularProgressIndicator(),
             )
           : Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/bg.jpg'),
                     fit: BoxFit.cover),
@@ -42,16 +42,16 @@ class _HomescreenState extends State<Homescreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const GreetingSection(),
+                  GreetingSection(),
                   verticalSpacing(Dimensions.height30),
                   TitleSection(title: "instructionTitle".tr),
-                  const InstructionsSection(),
+                  InstructionsSection(),
                   verticalSpacing(Dimensions.height30),
                   TitleSection(
                     title: "historyTitle".tr,
                   ),
                   verticalSpacing(Dimensions.height20),
-                  HistorySection(size: size, diseaseService: diseaseService)
+                  HistorySection(size: size, diseaseService: _diseaseService)
                 ],
               ),
             ),

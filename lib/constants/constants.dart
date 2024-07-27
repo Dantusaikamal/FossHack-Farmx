@@ -8,11 +8,3 @@ class AppColors {
   static const kSecondary = Color(0xff626463);
   static const kWhite = Color(0xffffffff);
 }
-
-class NavColors {
-  static const kM = Color(0xff00ad48);
-  static const kAcc = Color(0xff1ca088);
-  static const kBlue = Color.fromARGB(229, 0, 4, 253);
-  static const kWhite = Color(0xffffffff);
-  static const kPrimary = Color(0xff05ad88);
-}
