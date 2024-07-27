@@ -5,7 +5,7 @@ import 'package:farmx/src/widgets/small_text.dart';
 import 'package:get/get.dart';
 
 class InstructionsSection extends StatelessWidget {
-  const InstructionsSection({Key? key}) : super(key: key);
+  const InstructionsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +15,15 @@ class InstructionsSection extends StatelessWidget {
       ),
       height: Dimensions.height45 * 4.5,
       child: ScrollConfiguration(
-        behavior: MaterialScrollBehavior().copyWith(overscroll: false),
+        behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: [
             Card(
               elevation: 8,
               color: AppColors.kMain,
               child: ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: AppColors.kAccentLight,
                   child: Text(
                     '1',
@@ -41,7 +41,7 @@ class InstructionsSection extends StatelessWidget {
               elevation: 8,
               color: AppColors.kMain,
               child: ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: AppColors.kAccentLight,
                   child: Text(
                     '2',

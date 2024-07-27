@@ -5,7 +5,7 @@ import 'package:farmx/src/widgets/big_text.dart';
 
 class TitleSection extends StatelessWidget {
   final String title;
-  const TitleSection({Key? key, required this.title}) : super(key: key);
+  const TitleSection({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

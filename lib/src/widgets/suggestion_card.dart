@@ -5,12 +5,12 @@ import 'package:farmx/constants/dimensions.dart';
 class SuggestionCard extends StatefulWidget {
   final String title, value, assetImagePath;
 
-  SuggestionCard({
-    Key? key,
+  const SuggestionCard({
+    super.key,
     required this.title,
     required this.value,
     required this.assetImagePath,
-  }) : super(key: key);
+  });
 
   @override
   State<SuggestionCard> createState() => _SuggestionCardState();
@@ -61,7 +61,7 @@ class _SuggestionCardState extends State<SuggestionCard> {
                   widget.value,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
-                    color: Color.fromARGB(255, 125, 126, 125),
+                    color: const Color.fromARGB(255, 125, 126, 125),
                     fontSize: Dimensions.font16,
                     fontWeight: FontWeight.w500,
                     fontFamily: "SFRegular",

@@ -4,7 +4,7 @@ import 'package:farmx/constants/constants.dart';
 // ignore: must_be_immutable
 class TextProperty extends StatelessWidget {
   TextProperty({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
     this.valueTextSize = 0,
@@ -12,7 +12,7 @@ class TextProperty extends StatelessWidget {
     this.titleColor = const Color(0xff626463),
     this.titleTextAlign,
     required this.height,
-  }) : super(key: key);
+  });
 
   final String title;
   double? titleSize, valueTextSize;

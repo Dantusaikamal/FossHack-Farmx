@@ -5,11 +5,10 @@ import 'package:farmx/constants/constants.dart';
 
 class PlantImage extends StatelessWidget {
   const PlantImage(
-      {Key? key,
+      {super.key,
       required this.size,
       required this.imageFile,
-      required this.borderColor})
-      : super(key: key);
+      required this.borderColor});
 
   final Size size;
   final File imageFile;
@@ -18,7 +17,7 @@ class PlantImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: AppColors.kWhite,
         border: Border.all(
@@ -26,7 +25,7 @@ class PlantImage extends StatelessWidget {
           color: AppColors.kMain,
         ),
         borderRadius: BorderRadius.circular(999),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.grey,
             offset: Offset(2, 2),

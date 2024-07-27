@@ -19,7 +19,7 @@ import 'package:translator/translator.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class HiddenDrawer extends StatefulWidget {
-  const HiddenDrawer({Key? key}) : super(key: key);
+  const HiddenDrawer({super.key});
 
   @override
   State<HiddenDrawer> createState() => _HiddenDrawerState();
@@ -42,9 +42,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
 
   void getPackage() async {
     packageInfo = await PackageInfo.fromPlatform();
-    String _version = packageInfo!.version;
+    String version = packageInfo!.version;
 
-    langController.setAppVersion(_version);
+    langController.setAppVersion(version);
   }
 
   @override
@@ -56,18 +56,18 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
   @override
   Widget build(BuildContext context) {
     // Get disease from provider
-    final _diseaseService = Provider.of<DiseaseService>(context);
+    final diseaseService = Provider.of<DiseaseService>(context);
 
     // Hive service
-    HiveService _hiveService = HiveService();
+    HiveService hiveService = HiveService();
 
     final Classifier classifier = Classifier();
-    late Disease _disease;
+    late Disease disease;
 
     return Scaffold(
-      key: this._scaffoldKey,
+      key: _scaffoldKey,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/bg.jpg'),
             fit: BoxFit.cover,
@@ -80,7 +80,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           vertical: Dimensions.height45,
         ),
         child: langController.loading
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : Column(
@@ -91,20 +91,20 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                       GetBuilder<LangController>(
                           builder: (_) => SmallText(
                                 text:
-                                    "version: " + langController.getAppVersion,
+                                    "version: ${langController.getAppVersion}",
                                 fontStyle: FontStyle.italic,
                                 size: Dimensions.font16 * 1.2,
                                 color: AppColors.kWhite,
                               ))
                     ],
                   ),
-                  Container(
+                  SizedBox(
                     height: Dimensions.height45 * 15,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         verticalSpacing(Dimensions.height45 * 1.5),
-                        Container(
+                        SizedBox(
                           height: Dimensions.height45 * 3,
                           width: Dimensions.height45 * 3,
                           child: Center(
@@ -136,23 +136,23 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                         verticalSpacing(Dimensions.height30),
                         InkWell(
                           onTap: () async {
-                            late double _confidence;
+                            late double confidence;
                             await classifier
                                 .getDisease(ImageSource.gallery)
                                 .then((value) {
-                              _disease = Disease(
+                              disease = Disease(
                                   name: value![0]["label"],
                                   imagePath: classifier.imageFile.path);
 
-                              _confidence = value[0]['confidence'];
+                              confidence = value[0]['confidence'];
                             });
                             // Check confidence
-                            if (_confidence > 0.8) {
+                            if (confidence > 0.8) {
                               // Set disease for Disease Service
-                              _diseaseService.setDiseaseValue(_disease);
+                              diseaseService.setDiseaseValue(disease);
 
                               // Save disease
-                              _hiveService.addDisease(_disease);
+                              hiveService.addDisease(disease);
 
                               Navigator.restorablePushNamed(
                                 context,
@@ -180,27 +180,27 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                         verticalSpacing(Dimensions.height30),
                         InkWell(
                           onTap: () async {
-                            late double _confidence;
+                            late double confidence;
 
                             await classifier
                                 .getDisease(ImageSource.camera)
                                 .then(
                               (value) {
-                                _disease = Disease(
+                                disease = Disease(
                                     name: value![0]["label"],
                                     imagePath: classifier.imageFile.path);
 
-                                _confidence = value[0]['confidence'];
+                                confidence = value[0]['confidence'];
                               },
                             );
 
                             // Check confidence
-                            if (_confidence > 0.8) {
+                            if (confidence > 0.8) {
                               // Set disease for Disease Service
-                              _diseaseService.setDiseaseValue(_disease);
+                              diseaseService.setDiseaseValue(disease);
 
                               // Save disease
-                              _hiveService.addDisease(_disease);
+                              hiveService.addDisease(disease);
 
                               Navigator.restorablePushNamed(
                                 context,
@@ -239,7 +239,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
   // bottomsheet container
 
   Widget _buildBottomSheet(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: Dimensions.height45 * 6,
       child: Column(
         children: [
@@ -276,25 +276,25 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
         Get.back();
 
         if (selectedOption == "English") {
-          updateLocale(Locale("en", "US"), context);
+          updateLocale(const Locale("en", "US"), context);
           langController.setLanguagecode("en");
         } else if (selectedOption == "Hindi") {
-          updateLocale(Locale("hi", "IN"), context);
+          updateLocale(const Locale("hi", "IN"), context);
           langController.setLanguagecode("hi");
         } else if (selectedOption == "Telugu") {
-          updateLocale(Locale("te", "IN"), context);
+          updateLocale(const Locale("te", "IN"), context);
           langController.setLanguagecode("te");
         } else if (selectedOption == "Gujarati") {
-          updateLocale(Locale("gu", "IN"), context);
+          updateLocale(const Locale("gu", "IN"), context);
           langController.setLanguagecode("gu");
         } else if (selectedOption == "Marathi") {
-          updateLocale(Locale("mr", "IN"), context);
+          updateLocale(const Locale("mr", "IN"), context);
           langController.setLanguagecode("mr");
         }
       },
       child: Chip(
         backgroundColor: isSelected ? AppColors.kMain : AppColors.kWhite,
-        shape: StadiumBorder(
+        shape: const StadiumBorder(
             side: BorderSide(
           color: AppColors.kMain,
         )),

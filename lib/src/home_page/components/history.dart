@@ -16,8 +16,7 @@ class HistorySection extends StatefulWidget {
   final DiseaseService diseaseService;
 
   const HistorySection(
-      {Key? key, required this.size, required this.diseaseService})
-      : super(key: key);
+      {super.key, required this.size, required this.diseaseService});
 
   @override
   State<HistorySection> createState() => _HistorySectionState();
@@ -59,7 +58,7 @@ class _HistorySectionState extends State<HistorySection> {
           return SizedBox(
               height: Dimensions.height45 * 5.2,
               child: PageView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: diseases.length,
                 controller: pageController,
                 itemBuilder: (context, index) {
@@ -132,7 +131,7 @@ class _HistorySectionState extends State<HistorySection> {
                   boxShadow: [
                     BoxShadow(
                       color: AppColors.kAccent,
-                      offset: Offset(2, 2),
+                      offset: const Offset(2, 2),
                       spreadRadius: 0.5,
                       blurRadius: (0.022 * size.height * 0.3),
                     ),
@@ -154,7 +153,7 @@ class _HistorySectionState extends State<HistorySection> {
                                 Radius.circular((0.053 * size.height * 0.3)),
                             bottomRight:
                                 Radius.circular((0.053 * size.height * 0.3))),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
                           tileMode: TileMode.mirror,
@@ -169,7 +168,7 @@ class _HistorySectionState extends State<HistorySection> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Disease: ' + disease.name,
+                          Text('Disease: ${disease.name}',
                               style: TextStyle(
                                 color: AppColors.kWhite,
                                 fontSize: (0.066 * size.height * 0.3),

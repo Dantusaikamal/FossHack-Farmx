@@ -3,7 +3,7 @@ import 'package:farmx/constants/constants.dart';
 import 'package:farmx/constants/dimensions.dart';
 
 class GreetingSection extends StatelessWidget {
-  const GreetingSection({Key? key}) : super(key: key);
+  const GreetingSection({super.key});
 
   @override
   Widget build(BuildContext context) {
