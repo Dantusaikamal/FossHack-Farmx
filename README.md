@@ -14,8 +14,6 @@
   <img src="https://img.shields.io/badge/License-MIT-green.svg">
 </p>
 
-  #### (Part of top 50 submissions in Google Solution Challenge :trophy:)
-
 Agriculture is the primary source of livelihood for about 58 per cent of India’s population. Gross Value Added by agriculture, forestry and fishing is estimated at Rs 18.55 lakh crore (US$ 265.51 billion) in FY19(PE).  
 
 Apart from being an industry, agriculture is the main source of income for about 70 million farmers in India. Undoubtedly, Agriculture is crucial to Indian economy. What's more important, is that Indian farmers are feeding 1.4 billion people, which is one-fifth of the total world population. 
