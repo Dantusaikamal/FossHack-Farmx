@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/github/last-commit/Dantusaikamal/FossHack-Farmx">
   <img src="https://img.shields.io/github/issues-raw/Dantusaikamal/FossHack-Farmx">
   <img src="https://img.shields.io/github/issues-pr/Dantusaikamal/FossHack-Farmx">
-  <img src="https://img.shields.io/badge/License-MIT-green.svg">
+  <img src="https://img.shields.io/badge/GPL-3.0-license.svg">
 </p>
 
 Agriculture is the primary source of livelihood for about 58 per cent of India’s population. Gross Value Added by agriculture, forestry and fishing is estimated at Rs 18.55 lakh crore (US$ 265.51 billion) in FY19(PE).  
