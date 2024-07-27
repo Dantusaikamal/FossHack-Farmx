@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:farmx/src/home_page/home.dart';
 
 class OnBoadingScreen extends StatefulWidget {
-  const OnBoadingScreen({super.key});
+  const OnBoadingScreen({Key? key}) : super(key: key);
 
   @override
   State<OnBoadingScreen> createState() => _OnBoadingScreenState();
@@ -84,7 +84,7 @@ class _OnBoadingScreenState extends State<OnBoadingScreen> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.green.withOpacity(0.8),
-                                  offset: const Offset(5, 5),
+                                  offset: Offset(5, 5),
                                   blurRadius: 15,
                                 ),
                               ]),
@@ -111,7 +111,7 @@ class _OnBoadingScreenState extends State<OnBoadingScreen> {
                             RawMaterialButton(
                               onPressed: () {
                                 pageController.animateToPage(slideIndex - 1,
-                                    duration: const Duration(milliseconds: 500),
+                                    duration: Duration(milliseconds: 500),
                                     curve: Curves.linear);
                               },
                               elevation: 0,
@@ -129,7 +129,7 @@ class _OnBoadingScreenState extends State<OnBoadingScreen> {
                               child: InkWell(
                                 onTap: () {
                                   pageController.animateToPage(slideIndex + 1,
-                                      duration: const Duration(milliseconds: 500),
+                                      duration: Duration(milliseconds: 500),
                                       curve: Curves.linear);
                                 },
                                 child: Container(
@@ -151,8 +151,8 @@ class _OnBoadingScreenState extends State<OnBoadingScreen> {
                                       ),
                                     ],
                                   ),
-                                  child: const Row(
-                                    children: [
+                                  child: Row(
+                                    children: const [
                                       Text(
                                         "Next",
                                         style: TextStyle(
@@ -177,7 +177,7 @@ class _OnBoadingScreenState extends State<OnBoadingScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Home(),
+                    builder: (context) => Home(),
                   ),
                 );
 
@@ -204,10 +204,11 @@ class SliderTile extends StatelessWidget {
   final String imagePath, title, desc;
 
   const SliderTile(
-      {super.key,
+      {Key? key,
       required this.imagePath,
       required this.title,
-      required this.desc});
+      required this.desc})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -218,24 +219,24 @@ class SliderTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(imagePath),
-          const SizedBox(
+          SizedBox(
             height: 40,
           ),
           Text(
             title,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 20.0,
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 20.0,
           ),
           Text(
             desc,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 14,
             ),

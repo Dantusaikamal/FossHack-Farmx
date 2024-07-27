@@ -15,7 +15,7 @@ class LangController extends GetxController {
 
   bool _loading = false;
 
-  final List<dynamic> _options = Languages.options;
+  List<dynamic> _options = Languages.options;
   List<dynamic> get options => _options;
 
   bool get loading => _loading;

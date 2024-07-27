@@ -6,7 +6,7 @@ import 'package:farmx/src/home_page/components/hidden_drawer.dart';
 import 'package:farmx/src/home_page/components/home_screen.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
   static const routeName = '/';
   @override
   State<Home> createState() => _HomeState();
@@ -32,7 +32,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     super.initState();
 
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
   }
 
   @override
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: Stack(
         children: [
-          const HiddenDrawer(),
+          HiddenDrawer(),
           AnimatedContainer(
             transform: Matrix4.translationValues(
                 xOffset - (isDrawerOpen ? 10 : 0),
@@ -85,7 +85,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ..scale(scaleFactor - (isDrawerOpen ? 0.07 : 0)),
             duration: const Duration(milliseconds: 250),
             child: Container(
-              color: const Color.fromARGB(109, 236, 253, 232),
+              color: Color.fromARGB(109, 236, 253, 232),
             ),
           ),
           AnimatedContainer(
@@ -97,7 +97,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ..scale(scaleFactor - (isDrawerOpen ? 0.12 : 0)),
             duration: const Duration(milliseconds: 250),
             child: Container(
-              color: const Color.fromARGB(66, 236, 253, 232),
+              color: Color.fromARGB(66, 236, 253, 232),
             ),
           ),
           AnimatedContainer(
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ..rotateZ(rotateAngle)
               ..scale(scaleFactor),
             duration: const Duration(milliseconds: 250),
-            child: const Homescreen(),
+            child: Homescreen(),
           )
         ],
       ),

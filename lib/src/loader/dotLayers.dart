@@ -13,8 +13,8 @@ class DotLayers extends StatefulWidget {
     required this.spaceBetweenDot,
     required this.dotRadius,
     required this.dotColor,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<DotLayers> createState() => _DotLayersState();
@@ -41,17 +41,17 @@ class Dot extends StatelessWidget {
   const Dot({
     required this.radius,
     required this.color,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: radius,
-        width: radius,
+        height: this.radius,
+        width: this.radius,
         decoration: BoxDecoration(
-          color: color,
+          color: this.color,
           shape: BoxShape.circle,
         ),
       ),
